@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="/newpost" method="post">
+    <label for="title">Post Title:</label>
+    <input type="text" name="title" id="title" value="{{ p_title }}">
+    
+    {% if "title_error" in errors %}
+    <span class="error">Invalid post title.</span>
+    {% endif %}
+    <br>
+    <label for="body">Post Body:</label>
+    <textarea name="body" id="body">{{ p_body }}</textarea>
+    {% if "body_error" in errors %}
+    <span class="error">Invalid post body.</span>
+    {% endif %}
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
