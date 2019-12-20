@@ -3,16 +3,28 @@
     <head>
         <title>{{title}}</title>
         <style>
-            .error{
-                color:red;
-            }
+            
         </style>
     </head>
     <body>
-        <a href="/blog">View Posts</a>
+        <a href="/">Home</a>
+        <a href="/blog">Blogs</a>
+        <span> - </span>
+        
+        {% if not log_user %}
+        <a href="/login">Login</a>
+        <a href="/register">Sign Up</a>
+
+        {% endif %}
+        
+        {% if log_user %}
         <a href="/newpost">Create New Post</a>
+        <a href="/blog?user={{ log_user }}">Your Posts</a>
+        <a href="/logout">Log Out</a>
+        {% endif %}
 
         {% block content %}
         {% endblock %}
+        
     </body>
 </html>
